@@ -13,11 +13,14 @@ namespace YetAnotherQuotaSettingsMod.Patches
         [HarmonyPostfix]
         private static void AwakePostfix(TimeOfDay __instance)
         {
-            __instance.quotaVariables.startingQuota = YetAnotherQuotaSettingsMod.startingQuota;
-            __instance.quotaVariables.deadlineDaysAmount = YetAnotherQuotaSettingsMod.deadlineDaysAmount;
-            __instance.quotaVariables.increaseSteepness = YetAnotherQuotaSettingsMod.increaseSteepness;
-            __instance.quotaVariables.startingCredits = YetAnotherQuotaSettingsMod.startingCredits;
-            __instance.quotaVariables.startingQuota = YetAnotherQuotaSettingsMod.startingQuota;
+            if (!YetAnotherQuotaSettingsMod.onlyChangeCurve)
+            {
+                __instance.quotaVariables.startingQuota = YetAnotherQuotaSettingsMod.startingQuota;
+                __instance.quotaVariables.deadlineDaysAmount = YetAnotherQuotaSettingsMod.deadlineDaysAmount;
+                __instance.quotaVariables.increaseSteepness = YetAnotherQuotaSettingsMod.increaseSteepness;
+                __instance.quotaVariables.startingCredits = YetAnotherQuotaSettingsMod.startingCredits;
+                __instance.quotaVariables.startingQuota = YetAnotherQuotaSettingsMod.startingQuota;
+            }
 
             if (!string.IsNullOrWhiteSpace(YetAnotherQuotaSettingsMod.randomizerCurve))
             {
